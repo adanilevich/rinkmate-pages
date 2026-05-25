@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RinkMate — Maintenance</title>
   <script>
-    var returnUrl = new URLSearchParams(location.search).get('return') || 'https://app.rinkmate.de';
-    setTimeout(function() { location.href = returnUrl; }, 30000);
+    var returnUrl = new URLSearchParams(location.search).get('return');
+    if (returnUrl) setTimeout(function() { location.href = returnUrl; }, 30000);
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
