@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RinkMate — Maintenance</title>
+  <script>
+    var returnUrl = new URLSearchParams(location.search).get('return') || 'https://app.rinkmate.de';
+    setTimeout(function() { location.href = returnUrl; }, 30000);
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:             #07090F;
+      --surface:        #0E1219;
+      --ice:            #3BAFDA;
+      --ice-dim:        rgba(59,175,218,.15);
+      --text-primary:   #F0F4F8;
+      --text-secondary: #9EAEC0;
+      --text-tertiary:  #6B7A8D;
+      --border:         #1A2233;
+      --fs-xs:   .80rem;
+      --fs-s:    .85rem;
+      --fs-xxl:  1.25rem;
+      --fs-peta: 2.5rem;
+      --ls-normal: .08em;
+      --ls-wide:   .10em;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:             #F7F8FA;
+        --surface:        #FFFFFF;
+        --text-primary:   #0B0F14;
+        --text-secondary: #4A5568;
+        --text-tertiary:  #7B8494;
+        --border:         #D5DBE3;
+      }
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .rink {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+      gap: 1.5rem;
+    }
+
+    /* Brand block */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+    }
+    .brand-hex { width: 46px; height: 46px; }
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: var(--fs-peta);
+      letter-spacing: var(--ls-wide);
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    /* Rink-line divider */
+    .rink-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--ice), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+    .rink-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--text-primary) 50%, transparent);
+      animation: skate 2.4s ease-in-out infinite;
+    }
+    @keyframes skate {
+      0%   { left: -60%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { left: 120%; opacity: 0; }
+    }
+
+    /* Content */
+    .maintenance-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .maintenance-title {
+      font-size: var(--fs-xxl);
+      letter-spacing: var(--ls-normal);
+      color: var(--text-primary);
+    }
+    .maintenance-body {
+      font-size: var(--fs-s);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="rink">
+    <div class="brand">
+      <svg class="brand-hex" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="brand-hex-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="10" in="SourceGraphic" result="b2"/>
+            <feGaussianBlur stdDeviation="4" result="b1"/>
+            <feMerge>
+              <feMergeNode in="b2"/>
+              <feMergeNode in="b1"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <polygon points="100,18 178,55 178,145 100,182 22,145 22,55" fill="#0E1A24"/>
+        <g filter="url(#brand-hex-glow)">
+          <polygon points="100,18 178,55 178,145 100,182 22,145 22,55"
+                   fill="none" stroke="#3BAFDA" stroke-width="4"/>
+          <text x="100" y="125" text-anchor="middle"
+                font-family="'Bebas Neue', sans-serif" font-size="80"
+                letter-spacing="3.2" fill="#3BAFDA">RM</text>
+        </g>
+      </svg>
+      <span class="brand-name">RinkMate</span>
+    </div>
+    <div class="rink-line"></div>
+    <div class="maintenance-content">
+      <p class="maintenance-title">We'll be right back</p>
+      <p class="maintenance-body">
+        RinkMate is undergoing scheduled maintenance. This usually takes about 5 minutes.
+        <br>You will be automatically redirected when maintenance is over.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
