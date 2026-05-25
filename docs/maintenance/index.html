@@ -4,10 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RinkMate — Maintenance</title>
-  <script>
-    var returnUrl = new URLSearchParams(location.search).get('return');
-    if (returnUrl) setTimeout(function() { location.href = returnUrl; }, 30000);
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -120,6 +116,24 @@
       color: var(--text-secondary);
       line-height: 1.5;
     }
+
+    /* Try again button */
+    .retry-btn {
+      align-self: center;
+      margin-top: .4rem;
+      padding: .7rem 1.8rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: var(--fs-s);
+      font-weight: 500;
+      letter-spacing: var(--ls-normal);
+      color: var(--bg);
+      background: var(--ice);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity .15s ease;
+    }
+    .retry-btn:hover { opacity: .88; }
   </style>
 </head>
 <body>
@@ -153,9 +167,10 @@
       <p class="maintenance-title">We'll be right back</p>
       <p class="maintenance-body">
         RinkMate is undergoing scheduled maintenance. This usually takes about 5 minutes.
-        <br>You will be automatically redirected when maintenance is over.
+        <br>Tap the button below to check if we're back.
       </p>
     </div>
+    <button class="retry-btn" onclick="location.reload()">Try again</button>
   </div>
 </body>
 </html>
